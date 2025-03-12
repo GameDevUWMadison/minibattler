@@ -1,0 +1,190 @@
+[gd_scene load_steps=20 format=3 uid="uid://rmwxpoa1cxty"]
+
+[ext_resource type="StyleBox" uid="uid://bs64gyd542ybb" path="res://ui-resources/progbar_back.tres" id="1_4h4y0"]
+[ext_resource type="StyleBox" uid="uid://c7wqm636736uv" path="res://ui-resources/progbar_filler.tres" id="2_b58ev"]
+[ext_resource type="Texture2D" uid="uid://bjshfe7bj3dom" path="res://imported-art/simple_battles/monster_slime.png" id="3_ankfk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qs8ve"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_torqi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x5yah"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6yxfh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w813j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_82ypl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0hu0f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p3ron"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8cfns"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i728k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dq4ak"]
+
+[sub_resource type="GDScript" id="GDScript_dtjk7"]
+script/source = "extends Button
+
+@onready var enemyrootnode = get_parent().get_parent()
+
+func _on_pressed():
+	Manager.set_targeted(enemyrootnode)
+"
+
+[sub_resource type="Animation" id="Animation_qs8ve"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_torqi"]
+resource_name = "bounce"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.6, 0.733333, 0.866667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.8), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.6, 0.733333, 0.866667, 1.03333, 1.33333),
+"transitions": PackedFloat32Array(0.329877, 3.03143, 1, 1, 0.329877, 3.03143, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -15), Vector2(0, 0), Vector2(0, 10), Vector2(0, 0), Vector2(0, -7), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_byfqd"]
+resource_name = "damage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-1, 0), Vector2(1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.0666667, 0.233333),
+"transitions": PackedFloat32Array(1e+06, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v6mvj"]
+_data = {
+&"RESET": SubResource("Animation_qs8ve"),
+&"bounce": SubResource("Animation_torqi"),
+&"damage": SubResource("Animation_byfqd")
+}
+
+[node name="Slime" type="Node2D" groups=["Enemy"]]
+
+[node name="healthbarAnchor" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2.0
+offset_top = -38.0
+offset_right = 38.0
+offset_bottom = 2.0
+
+[node name="targetbutton" type="Button" parent="healthbarAnchor"]
+layout_mode = 0
+offset_left = -26.0
+offset_top = -4.0
+offset_right = 33.0
+offset_bottom = 70.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qs8ve")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_torqi")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_x5yah")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_6yxfh")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_w813j")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_82ypl")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0hu0f")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_p3ron")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8cfns")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_i728k")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dq4ak")
+script = SubResource("GDScript_dtjk7")
+
+[node name="ProgressBar" type="ProgressBar" parent="healthbarAnchor"]
+layout_mode = 0
+offset_left = -19.0
+offset_top = -2.0
+offset_right = 21.0
+offset_bottom = 9.0
+theme_override_constants/outline_size = 17
+theme_override_styles/background = ExtResource("1_4h4y0")
+theme_override_styles/fill = ExtResource("2_b58ev")
+value = 100.0
+show_percentage = false
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -40)
+texture = ExtResource("3_ankfk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite")
+libraries = {
+&"": SubResource("AnimationLibrary_v6mvj")
+}
+
+[connection signal="pressed" from="healthbarAnchor/targetbutton" to="healthbarAnchor/targetbutton" method="_on_pressed"]
