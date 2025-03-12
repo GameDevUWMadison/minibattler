@@ -118,12 +118,9 @@ func _on_defend() -> void:
 	if current_battlestate == BattleState.AWAIT_PLAYER_INPUT:
 		current_battlestate = BattleState.RUNNING_PLAYERMOVES
 		
-		print("the player defended this turn")
-		print("WAITING")
-		await get_tree().create_timer(3.0).timeout
+		# await get_tree().create_timer(3.0).timeout
 		print("done WAITING!")
 		# What does this move do? Write code here.
-		update_HP_to(0)
 		
 		# then do the enemy turn!
 		enemy_turn()
