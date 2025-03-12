@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://b2s6hd3tkewa8"]
+
+[ext_resource type="Texture2D" uid="uid://bbaov2joewxx1" path="res://imported-art/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/HotkeyBox_34x34.png" id="1_55brn"]
+
+[resource]
+texture = ExtResource("1_55brn")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0

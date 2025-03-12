@@ -1,0 +1,401 @@
+[gd_scene load_steps=29 format=3 uid="uid://dehrc2oh51bms"]
+
+[ext_resource type="Texture2D" uid="uid://dudctc70o5xsh" path="res://imported-art/simple_battles/scene_dungeon.png" id="1_bdnra"]
+[ext_resource type="Texture2D" uid="uid://bjshfe7bj3dom" path="res://imported-art/simple_battles/monster_slime.png" id="2_3jwcr"]
+[ext_resource type="Texture2D" uid="uid://d3ttp0i7by6fu" path="res://imported-art/simple_battles/monster_skeletonwarrior.png" id="3_d6dgh"]
+[ext_resource type="StyleBox" uid="uid://bs64gyd542ybb" path="res://ui-resources/progbar_back.tres" id="4_byfqd"]
+[ext_resource type="StyleBox" uid="uid://b2s6hd3tkewa8" path="res://ui-resources/gold-frame-style.tres" id="4_d6dgh"]
+[ext_resource type="StyleBox" uid="uid://c7wqm636736uv" path="res://ui-resources/progbar_filler.tres" id="5_qs8ve"]
+[ext_resource type="FontFile" uid="uid://bd60j5rpmqr5k" path="res://fonts/04B_03__.TTF" id="5_t1k8e"]
+[ext_resource type="Texture2D" uid="uid://dff3maq8hndkb" path="res://imported-art/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/target.png" id="7_qs8ve"]
+[ext_resource type="Script" uid="uid://dkgm7jtfhulpd" path="res://scripts/scrolltext.gd" id="10_torqi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qs8ve"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_torqi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x5yah"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6yxfh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w813j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_82ypl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0hu0f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p3ron"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8cfns"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i728k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dq4ak"]
+
+[sub_resource type="GDScript" id="GDScript_dtjk7"]
+script/source = "extends Button
+
+@onready var enemyrootnode = get_parent().get_parent()
+
+func _on_pressed():
+	Manager.set_targeted(enemyrootnode)
+"
+
+[sub_resource type="Animation" id="Animation_qs8ve"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_torqi"]
+resource_name = "bounce"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.6, 0.733333, 0.866667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.8), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.6, 0.733333, 0.866667, 1.03333, 1.33333),
+"transitions": PackedFloat32Array(0.329877, 3.03143, 1, 1, 0.329877, 3.03143, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -15), Vector2(0, 0), Vector2(0, 10), Vector2(0, 0), Vector2(0, -7), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_byfqd"]
+resource_name = "damage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-1, 0), Vector2(1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.0666667, 0.233333),
+"transitions": PackedFloat32Array(1e+06, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v6mvj"]
+_data = {
+&"RESET": SubResource("Animation_qs8ve"),
+&"bounce": SubResource("Animation_torqi"),
+&"damage": SubResource("Animation_byfqd")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_torqi"]
+bg_color = Color(0.32, 0.32, 0.32, 0.411765)
+
+[sub_resource type="Theme" id="Theme_torqi"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 8
+Button/fonts/font = ExtResource("5_t1k8e")
+Button/styles/hover = SubResource("StyleBoxFlat_torqi")
+Label/font_sizes/font_size = 8
+Label/fonts/font = ExtResource("5_t1k8e")
+RichTextLabel/font_sizes/normal_font_size = 8
+RichTextLabel/fonts/normal_font = ExtResource("5_t1k8e")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v6mvj"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="BackgroundScene" type="Sprite2D" parent="."]
+position = Vector2(80, 120)
+texture = ExtResource("1_bdnra")
+
+[node name="BackgroundScene2" type="Sprite2D" parent="."]
+position = Vector2(240, 120)
+texture = ExtResource("1_bdnra")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Skeleton" type="Node2D" parent="Enemies" groups=["Enemy"]]
+position = Vector2(45, 97)
+
+[node name="healthbarAnchor" type="Control" parent="Enemies/Skeleton"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2.0
+offset_top = -58.0
+offset_right = 38.0
+offset_bottom = -18.0
+
+[node name="targetbutton" type="Button" parent="Enemies/Skeleton/healthbarAnchor"]
+offset_left = -30.0
+offset_top = -6.0
+offset_right = 48.0
+offset_bottom = 107.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qs8ve")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_torqi")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_x5yah")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_6yxfh")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_w813j")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_82ypl")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0hu0f")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_p3ron")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8cfns")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_i728k")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dq4ak")
+script = SubResource("GDScript_dtjk7")
+
+[node name="ProgressBar" type="ProgressBar" parent="Enemies/Skeleton/healthbarAnchor"]
+layout_mode = 0
+offset_left = -19.0
+offset_top = -2.0
+offset_right = 21.0
+offset_bottom = 9.0
+theme_override_constants/outline_size = 17
+theme_override_styles/background = ExtResource("4_byfqd")
+theme_override_styles/fill = ExtResource("5_qs8ve")
+value = 100.0
+show_percentage = false
+
+[node name="Sprite" type="Sprite2D" parent="Enemies/Skeleton"]
+position = Vector2(0, 9)
+texture = ExtResource("3_d6dgh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Skeleton"]
+root_node = NodePath("../Sprite")
+libraries = {
+&"": SubResource("AnimationLibrary_v6mvj")
+}
+
+[node name="Slime" type="Node2D" parent="Enemies" groups=["Enemy"]]
+position = Vector2(117, 135)
+
+[node name="healthbarAnchor" type="Control" parent="Enemies/Slime"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2.0
+offset_top = -38.0
+offset_right = 38.0
+offset_bottom = 2.0
+
+[node name="targetbutton" type="Button" parent="Enemies/Slime/healthbarAnchor"]
+offset_left = -26.0
+offset_top = -4.0
+offset_right = 33.0
+offset_bottom = 70.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qs8ve")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_torqi")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_x5yah")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_6yxfh")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_w813j")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_82ypl")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0hu0f")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_p3ron")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8cfns")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_i728k")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dq4ak")
+script = SubResource("GDScript_dtjk7")
+
+[node name="ProgressBar" type="ProgressBar" parent="Enemies/Slime/healthbarAnchor"]
+layout_mode = 0
+offset_left = -19.0
+offset_top = -2.0
+offset_right = 21.0
+offset_bottom = 9.0
+theme_override_constants/outline_size = 17
+theme_override_styles/background = ExtResource("4_byfqd")
+theme_override_styles/fill = ExtResource("5_qs8ve")
+value = 100.0
+show_percentage = false
+
+[node name="Sprite" type="Sprite2D" parent="Enemies/Slime"]
+position = Vector2(0, -40)
+texture = ExtResource("2_3jwcr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Slime"]
+root_node = NodePath("../Sprite")
+libraries = {
+&"": SubResource("AnimationLibrary_v6mvj")
+}
+
+[node name="targetingindicator" type="Sprite2D" parent="." groups=["TargetUI"]]
+visible = false
+position = Vector2(44, 84)
+texture = ExtResource("7_qs8ve")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_torqi")
+
+[node name="battletext" type="Panel" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -56.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("4_d6dgh")
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/UI/battletext"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Enemies approach! You prepare to fight.
+"
+script = ExtResource("10_torqi")
+
+[node name="playerinput" type="Panel" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("4_d6dgh")
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/playerinput"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -205.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_t1k8e")
+theme_override_font_sizes/font_size = 8
+text = "What will you do?
+"
+autowrap_mode = 3
+
+[node name="melee" type="Button" parent="CanvasLayer/UI/playerinput"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 25.0
+offset_right = 67.0
+offset_bottom = 39.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_v6mvj")
+text = "Melee"
+
+[node name="fireball" type="Button" parent="CanvasLayer/UI/playerinput"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 25.0
+offset_right = 138.0
+offset_bottom = 39.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_v6mvj")
+text = "Fireball!"
+
+[node name="defend" type="Button" parent="CanvasLayer/UI/playerinput"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 42.0
+offset_right = 67.0
+offset_bottom = 56.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_v6mvj")
+text = "Defend!"
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 213.0
+offset_right = 302.0
+offset_bottom = 225.0
+theme_override_constants/outline_size = 17
+theme_override_styles/background = ExtResource("4_byfqd")
+theme_override_styles/fill = ExtResource("5_qs8ve")
+value = 100.0
+show_percentage = false
+
+[node name="HPlabel" type="Label" parent="CanvasLayer/UI/ProgressBar"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -8.0
+offset_right = 42.0
+text = "Your HP"
+
+[connection signal="pressed" from="Enemies/Skeleton/healthbarAnchor/targetbutton" to="Enemies/Skeleton/healthbarAnchor/targetbutton" method="_on_pressed"]
+[connection signal="pressed" from="Enemies/Slime/healthbarAnchor/targetbutton" to="Enemies/Slime/healthbarAnchor/targetbutton" method="_on_pressed"]
